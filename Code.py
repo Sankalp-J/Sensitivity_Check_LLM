@@ -23,7 +23,7 @@ if user_input:
     response = client.chat.completions.create(
         model="llama-3.1-8b-instant",  # check ifthis model workds
         messages=[
-            {"role": "system", "content": Check if this information has adhaar card number},
+            {"role": "system", "content": "Check if this information has adhaar card number"},
             {"role": "user", "content": user_input}
         ]
     )
