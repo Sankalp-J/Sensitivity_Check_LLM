@@ -11,6 +11,10 @@ st.set_page_config(
 )
 
 # LLM initialization (replace with your LLM provider)
+# Load configuration and secrets
+GROQ_API_KEY = st.secrets["groq"]["api_key"]
+os.environ["GROQ_API_KEY"] = GROQ_API_KEY
+
 client = Groq()
 
 
@@ -35,7 +39,7 @@ if user_input:
         response = client.chat.completions.create(
             model="llama-3.1-8b-instant",
             messages=[
-                {"role": "system", "content": "Your prompt here to check for various sensitive content types"},
+                {"role": "system", "content": "Check if Adhaar card number is present"},
                 {"role": "user", "content": user_input}
             ]
         )
