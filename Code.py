@@ -18,14 +18,14 @@ os.environ["GROQ_API_KEY"] = GROQ_API_KEY
 client = Groq()
 
 
-def highlight_text(text, highlights):
+#def highlight_text(text, highlights):
     # Function to highlight text based on a list of highlights (Placeholder)
-    pass
+   # pass
 
 
-def parse_llm_output(response):
+#def parse_llm_output(response):
     # Function to parse the LLM's JSON output (Placeholder)
-    pass
+    #pass
 
 
 # Streamlit UI
@@ -45,19 +45,13 @@ if user_input:
         )
 
         # Parse LLM response into JSON
-        json_response = json.loads(response.choices[0].message.content)
+        print (response)
+        assistant_response = response.choices[0].message.content
+        st.write(assistant_response)
+        #json_response = json.loads(response.choices[0].message.content)
 
         # Display LLM output in Streamlit
-        # Check for "is_content_do_not_send" flag
-        if json_response["is_content_do_not_send"] == "Yes":
-            st.error("Content cannot be sent.")
-        else:
-            # Highlight sensitive content and display other response parts
-            highlighted_content = highlight_text(user_input, json_response["highlights"])  # Placeholder function call
-            st.markdown(highlighted_content)
-            st.write("Copilot Message:")  # Example of displaying other parts
-            st.markdown(json_response["copilot_message"])
-            # ... display other parts like revised_content, recommended_actions
+      
 
 # Error handling and user feedback mechanisms can be added here (Optional)
 
